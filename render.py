@@ -9,9 +9,9 @@ if __name__ == "__main__":
     data = pd.read_csv("data.csv", header=None, names=["name", "maintained"])
 
     # read the template files
-    lines = [line.strip("\n") for line in open("template.md", "r").readlines()]
-    lines = [line for line in lines if line]
+    out = open("template.md", "r").read().rstrip()
 
+    lines = []
     for i, row in data.iterrows():
         line = "| "
         slug = row["name"]
@@ -44,5 +44,5 @@ if __name__ == "__main__":
         lines.append(line)
 
     with open("README.md", "w") as ff:
-        ff.write("\n".join(lines))
+        ff.write(out + "\n" + "\n".join(lines))
 
