@@ -23,7 +23,9 @@ if __name__ == "__main__":
         # PyPi
         pypi = f"https://pypi.org/project/{slug}"
         if requests.get(pypi).status_code == 200:
-            line += f"[![PyPI version](https://img.shields.io/pypi/v/{slug}.svg)](https://pypi.org/project/row[name])"
+            line += (
+                f"[![PyPI version](https://img.shields.io/pypi/v/{slug}.svg)]({pypi})"
+            )
         line += "| "
 
         # Travis CI
